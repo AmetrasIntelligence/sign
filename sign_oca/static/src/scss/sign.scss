@@ -16,6 +16,8 @@
         border: transparent;
         background-color: transparent;
     }
+
+    z-index: 2147483647; // highest possible css zindex to ensure that the field is never overlapped
 }
 .o_sign_oca_field_config {
     position: absolute;
