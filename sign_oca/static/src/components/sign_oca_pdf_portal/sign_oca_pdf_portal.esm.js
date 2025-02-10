@@ -8,6 +8,7 @@ import env from "web.public_env";
 import {renderToString} from "@web/core/utils/render";
 import session from "web.session";
 import {templates} from "@web/core/assets";
+
 export class SignOcaPdfPortal extends SignOcaPdf {
     setup() {
         super.setup(...arguments);
@@ -79,11 +80,20 @@ export function initDocumentToSign(properties) {
         ]).then(async function () {
             var app = new App(null, {templates, test: true});
             renderToString.app = app;
-            mount(SignOcaPdfPortal, document.body, {
-                env,
-                props: properties,
-                templates: templates,
-            });
+
+            let dialogService = env.services.dialog;
+            const dialogServiceInterval = setInterval(() => {
+                if (dialogService) {
+                    clearInterval(dialogServiceInterval);
+                    mount(SignOcaPdfPortal, document.body, {
+                        env,
+                        props: properties,
+                        templates: templates,
+                    });
+                } else {
+                    dialogService = env.services.dialog;
+                }
+            }, 100);
         });
     });
 }
