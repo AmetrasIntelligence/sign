@@ -22,29 +22,36 @@ const signatureSignOca = {
             core.qweb.render("sign_oca.sign_iframe_field_signature", {item: item})
         )[0];
         if (item.role_id === parent.info.role_id) {
+            const requestOpenDialog = () => {
+                if (!item.dialogOpened) {
+                    item.dialogOpened = true;
+                    var signatureOptions = {
+                        fontColor: "DarkBlue",
+                        defaultName: parent.info.partner.name,
+                    };
+                    parent.env.services.dialog.add(
+                        SignatureDialog,
+                        {
+                            ...signatureOptions,
+                            uploadSignature: (data) =>
+                                this.uploadSignature(parent, item, signatureItem, data),
+                        },
+                        {
+                            onClose: () => {
+                                item.dialogOpened = false;
+                            },
+                        }
+                    );
+                }
+            };
+
             signatureItem[0].addEventListener("focus_signature", () => {
-                var signatureOptions = {
-                    fontColor: "DarkBlue",
-                    defaultName: parent.info.partner.name,
-                };
-                parent.env.services.dialog.add(SignatureDialog, {
-                    ...signatureOptions,
-                    uploadSignature: (data) =>
-                        this.uploadSignature(parent, item, signatureItem, data),
-                });
+                requestOpenDialog();
             });
             input.addEventListener("click", (ev) => {
                 ev.preventDefault();
                 ev.stopPropagation();
-                var signatureOptions = {
-                    fontColor: "DarkBlue",
-                    defaultName: parent.info.partner.name,
-                };
-                parent.env.services.dialog.add(SignatureDialog, {
-                    ...signatureOptions,
-                    uploadSignature: (data) =>
-                        this.uploadSignature(parent, item, signatureItem, data),
-                });
+                requestOpenDialog();
             });
             input.addEventListener("keydown", (ev) => {
                 if ((ev.keyCode || ev.which) !== 9) {
