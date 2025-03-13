@@ -16,9 +16,11 @@
                     <div class="col-lg-4 mobile-hide">
                         <div
                             class="o_oca_sign_portal_info justify-content-center"
-                            style="width: 100%; height: 100%"
+                            style="widthÏ 100%; height: 100%"
                         >
-                            Please Review And Act On This Document
+                        <span
+                                t-esc="env._t('Please Review And Act On This Document')"
+                            />
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -37,7 +39,9 @@
                     class="btn btn-primary"
                     id="sign_oca_button"
                     t-on-click="_onClickSign"
-                >Validate &amp; Send document</button>
+                >
+                    <span t-esc="env._t('Validate &amp; Send document')" />
+            </button>
             </div>
         </div>
     </div>

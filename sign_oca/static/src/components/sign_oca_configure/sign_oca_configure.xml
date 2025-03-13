@@ -15,13 +15,24 @@
     </t>
     <t t-name="sign_oca.SignOcaConfigureHelpDialog">
         <div>
-            <div
-            >In order to add a new field, do a right click over the PDF page. You will be able to select the field that you will import</div>
-            <div
-            >Then, you can move and resize the fields over the PDF page using the move icons.</div>
-            <div
-            >If you do a click over a field, you will be able to change the default configurations of the field</div>
-            <div>Data is saved automatically when editing</div>
+            <div>
+                <span
+                    t-esc="env._t('In order to add a new field, do a right click over the PDF page. You will be able to select the field that you will import')"
+                />
+            </div>
+            <div>
+                <span
+                    t-esc="env._t('Then, you can move and resize the fields over the PDF page using the move icons.')"
+                />
+            </div>
+            <div>
+                <span
+                    t-esc="env._t('If you do a click over a field, you will be able to change the default configurations of the field.')"
+                />
+            </div>
+            <div>
+                <span t-esc="env._t('Data is saved automatically when editing.')" />
+            </div>
         </div>
     </t>
     <t t-name="sign_oca.sign_iframe_field_configure">
@@ -46,9 +57,9 @@
             class="o_sign_oca_context_menu"
             t-attf-style="top: #{top};left: #{left};position: absolute"
         >
-            <div
-                class="o_sign_oca_button_header"
-            >Click on the field that you want to add</div>
+            <div class="o_sign_oca_button_header">
+                <span t-esc="env._t('Click on the field that you want to add.')" />
+            </div>
             <t t-foreach="info.fields" t-as="field">
                 <div
                     class="o_sign_oca_context_menu_item"
@@ -116,11 +127,13 @@
                 style="margin: 0px"
                 t-if="!isMobile"
             >
-                In order to add a new field, do a right click over the PDF page. You will be able to select the field that you will import.
-                Then, you can move and resize the fields over the PDF page using the move icons.
-                If you do a click over a field, you will be able to change the default configurations of the field<br
+                <span
+                    t-esc="env._t('In order to add a new field, do a right click over the PDF page. You will be able to select the field that you will import.
+                           Then, you can move and resize the fields over the PDF page using the move icons.
+                           If you do a click over a field, you will be able to change the default configurations of the field')"
                 />
-                Data is saved automatically when editing.
+                <br />
+                <span t-esc="env._t('Data is saved automatically when editing.')" />
             </div>
         </xpath>
     </t>

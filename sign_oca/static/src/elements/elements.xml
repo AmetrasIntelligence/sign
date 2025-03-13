@@ -37,9 +37,12 @@
     <t t-name="sign_oca.sign_oca_sign_dialog">
         <div>
             <div class="o_sign_oca_signature" />
-            <div
-                class="mt16 small"
-            >By clicking Adopt and Sign, I agree that the chosen signature/initials will be a valid electronic representation of my hand-written signature/initials for all purposes when it is used on documents, including legally binding contracts.</div>
+            <div class="mt16 small">
+                <span
+                    t-esc="env._t('By clicking Adopt and Sign, I agree that the chosen signature/initials will be a valid electronic representation of my hand-written signature/initials for all purposes when it is used on documents, including legally binding contracts.')"
+                />
+            </div>
         </div>
+
     </t>
 </templates>

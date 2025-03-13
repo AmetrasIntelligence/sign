@@ -26,7 +26,7 @@
                         <div
                             class="o_ActivityMenuView_noActivity dropdown-item-text text-center d-flex justify-content-center"
                         >
-                            <span>No requests to sign.</span>
+                            <span t-esc="env._t('No requests to sign.')" />
                         </div>
                     </t>
                     <t
@@ -80,7 +80,7 @@
                                         t-if="!requestGroupView.requestGroup.pending_count"
                                         class="o_no_activity mr16"
                                     >
-                                        0 Pending
+                                        <span t-esc="env._t('0 Pending')" />
                                     </span>
                                 </div>
                             </div>

@@ -8,7 +8,7 @@
                 accesskey="s"
                 t-if="to_sign"
             >
-                Sign
+                <span t-esc="env._t('Sign')" />
             </button>
         </div>
     </t>
